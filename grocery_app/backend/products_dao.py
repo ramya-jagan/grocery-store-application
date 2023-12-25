@@ -13,7 +13,7 @@ def get_all_products(connection):
   for(product_id, Name, uom_id,price_per_unit,uom_name) in cursor: 
      response.append({
     'product_id':product_id, 
-    'Name': uom_id,
+    'Name':Name,
     'price_per_unit':price_per_unit,
     'uom_name':uom_name
 
