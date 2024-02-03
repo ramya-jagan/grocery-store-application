@@ -22,7 +22,20 @@ def insert_order(connection, order):
   cursor.executemany(order_details_query, order_details_data)  
   connection.commit()
   return order_id
-  
+
+def get_all_orders(connection):
+  cursor=connection.cursor()
+  query=('select * from orders')
+  cursor.execute(query)
+  response=[]
+  for (order_id, customer_name, total, date_time) in cursor:
+    response.append({
+      'order_id': order_id,
+      'customer_name': customer_name,
+      'total': total,
+      'date_time': date_time
+    })
+  return response  
  
 if __name__== '__main__' :
 

@@ -43,6 +43,13 @@ def insert_order():
   response.headers.add("Access-control-Allow-origin",'*')
   return response
 
+@app.route('/getAllOrders', methods=['GET']) 
+def get_all_orders():
+   response=order_dao.get_all_orders(connection)
+   response=jsonify(response)
+   response.headers.add('Access-Control-Allow-Origin','*')
+   return response
+
 
 @app.route('/insertProduct',methods=['POST'])
 def insert_product():
@@ -51,6 +58,8 @@ def insert_product():
   response=jsonify({'product_id': product_id})
   response.headers.add("Access-Control-Allow-Origin","*")
   return response
+
+  
 
 if __name__=="__main__":
   print('Starting Python Flask For Grocery Store Management System')
